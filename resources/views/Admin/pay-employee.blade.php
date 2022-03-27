@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-8 mb-2">
             <div class="card">
                 <div class="card-header">{{ __('Pay Employee Bulk') }}</div>
                 <div class="card-body">
@@ -29,7 +29,7 @@
             </div>
         </div>
 
-        <div class="col-md-4 nb-2">
+        <div class="col-md-4 mb-2">
             <div class="card">
                 <div class="card-header">{{ __('Pay Employee Single') }}</div>
                 <div class="card-body">

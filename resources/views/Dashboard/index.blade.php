@@ -51,7 +51,7 @@
                                     </a>
                                 @endif
 
-                                <a class="dropdown-item" href="{{ route('create-employee') }}">
+                                <a class="dropdown-item" href="{{ route('account-settings') }}">
                                     {{ __('Account Settings') }}
                                 </a>
                                 
@@ -106,6 +106,11 @@
                                 <h5 class="card-title">NGN{{ number_format(Auth::user()->wallet->balance) }}</h5>
                                 <p class="card-text">This is your current wallet balance, your salary will be paid into your wallet.</p>
                             </div>
+                            @if (Auth::user()->wallet->default_withdrawal_date != null)
+                                <div class="card-footer">
+                                    <p class="card-text">Next Withdrawal: 30th April, 2022 By 2pm</p>
+                                </div>
+                            @endif
                         </div>
                         <div class="card border-secondary mb-3" style="">
                             <div class="card-header">Account Set-up</div>

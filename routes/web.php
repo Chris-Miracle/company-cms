@@ -14,7 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Auth::routes();
-Route::get('/', [App\Http\Controllers\DashboardController::class, 'index'])->middleware('auth');
+Route::get('/', [App\Http\Controllers\DashboardController::class, 'index'])->middleware('auth')->name('welcome');
+Route::get('/account-settings', [App\Http\Controllers\DashboardController::class, 'accountSetting'])->middleware('auth')->name('account-settings');
+Route::post('/personal-account-settings', [App\Http\Controllers\DashboardController::class, 'personalSetting'])->middleware('auth')->name('personal-account-setting');
+Route::post('/wallet-account-settings', [App\Http\Controllers\DashboardController::class, 'walletSetting'])->middleware('auth')->name('wallet-account-setting');
+Route::post('/security-account-settings', [App\Http\Controllers\DashboardController::class, 'securitySetting'])->middleware('auth')->name('security-account-setting');
 
 Route::middleware(['auth', 'Admin'])->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
