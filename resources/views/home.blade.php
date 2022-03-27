@@ -9,7 +9,7 @@
                 <p class="lead">Hello {{ Auth::user()->name }}, This is a simple Employee Management System, you can manage your company employee here.</p>
                 <hr class="my-4">
                 <p>Start by creating new Employee with the button below.</p>
-                <a class="btn btn-primary btn-lg" href="{{route('create-employee')}}" role="button">Create Employee</a>
+                <a class="btn btn-primary btn-lg mb-2" href="{{route('create-employee')}}" role="button">Create Employee</a>
             </div>
         </div>
         <div class="col-md-4">

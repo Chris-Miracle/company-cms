@@ -65,7 +65,11 @@
         <section class="mt-5">
             <div class="container">
                 <div class="row">
-                    
+                    @if(session()->has('Hey'))
+                        <div class="alert alert-warning" role="alert">
+                            <strong>Info!</strong> {{ session()->get('Hey') }}
+                        </div>
+                    @endif
                 </div>
 
                 <hr>
