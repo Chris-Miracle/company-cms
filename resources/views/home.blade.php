@@ -43,13 +43,6 @@
                             </div>
                         </div>
 
-                        <div class="form-group col-md-4">
-                            <label for="">Movie Cover [Max Size: 500kb]</label>
-                            <img id="image_1" src="{{asset('img/placeholder/ulf.jpg')}}" required alt="your image" style="width:100%; height:200px; border-radius: 7px;"/>
-                            <input type="file" class="form-control-file @error('movie_cover') is-invalid @enderror" name="movie_cover" id="imgInp1" value="{{old('movie_cover')}}">
-                            <div class="text-danger">{{$errors->first('movie_cover')}}</div>
-                        </div>
-
                         <button type="submit" class="btn btn-primary mt-1">Upload Movie</button>
                     </form>
                 </div>
