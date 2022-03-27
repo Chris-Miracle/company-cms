@@ -21,6 +21,11 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'salary',
+        'due_date',
+        'usertype',
+        'job_title',
+        'job_desc'
     ];
 
     /**
@@ -41,4 +46,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function wallet(){
+        return $this->hasOne('App\Models\Wallet');
+    }
 }
