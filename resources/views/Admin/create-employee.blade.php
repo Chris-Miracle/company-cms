@@ -5,45 +5,54 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Add New Movies') }}</div>
+                <div class="card-header">{{ __('Create Employee') }}</div>
                 <div class="card-body">
                     <form  method="post" enctype="multipart/form-data">
                         @csrf
                         @method('post')
                         <div class="row mb-4">
                             <div class="form-group col-md-6 mb-1">
-                                <label for="cinemaLocation">Cinema Location</label>
-                                <select class="form-control @error('cinema_location') is-invalid @enderror" name="cinema_location">
-                                    <option value=""> Select Cinema Location</option>
-                                    {{-- @foreach ($locations as $cinema )
-                                        <option value="{{$cinema->id}}">{{ $cinema->location }}</option>
-                                    @endforeach --}}
-                                </select>
-                                <div class="text-danger">{{$errors->first('cinema_location')}}</div>
+                                <label for="employeeName">Name</label>
+                                <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Eg: Sandra John" name="name" value="{{old('name')}}">
+                                <div class="text-danger">{{$errors->first('name')}}</div>
                             </div>
 
                             <div class="form-group col-md-6 mb-1">
-                                <label for="movieTitle">Title</label>
-                                <input type="text" class="form-control @error('movie_title') is-invalid @enderror" placeholder="Eg: Spider Man far from home" name="movie_title" value="{{old('movie_title')}}">
-                                <div class="text-danger">{{$errors->first('movie_title')}}</div>
+                                <label for="employeeTitle">Job Title</label>
+                                <input type="text" class="form-control @error('job_title') is-invalid @enderror" placeholder="Eg: Sales Manager" name="job_title" value="{{old('job_title')}}">
+                                <div class="text-danger">{{$errors->first('job_title')}}</div>
                             </div>
                         </div>
 
                         <div class="row mb-4">
                             <div class="form-group col-md-6 mb-1">
-                                <label for="showDate">Show Date</label>
-                                <input type="date" class="form-control @error('show_date') is-invalid @enderror" name="show_date" value="{{old('show_date')}}">
-                                <div class="text-danger">{{$errors->first('show_date')}}</div>
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{old('email')}}">
+                                <div class="text-danger">{{$errors->first('email')}}</div>
                             </div>
 
                             <div class="form-group col-md-6 mb-1">
-                                <label for="showTime">Show Time</label>
-                                <input type="time" class="form-control @error('show_time') is-invalid @enderror" name="show_time" value="{{old('show_time')}}">
-                                <div class="text-danger">{{$errors->first('show_time')}}</div>
+                                <label for="salary">Salary</label>
+                                <input type="number" class="form-control @error('salary') is-invalid @enderror" name="salary" value="{{old('salary')}}">
+                                <div class="text-danger">{{$errors->first('salary')}}</div>
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-primary mt-1">Upload Movie</button>
+                        <div class="row mb-4">
+                            <div class="form-group col-md-6 mb-1">
+                                <label for="passsword">Password</label>
+                                <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" value="{{old('password')}}">
+                                <div class="text-danger">{{$errors->first('password')}}</div>
+                            </div>
+
+                            <div class="form-group col-md-6 mb-1">
+                                <label for="password_confirmation">Confirm Password</label>
+                                <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation" value="{{old('password_confirmation')}}">
+                                <div class="text-danger">{{$errors->first('password_confirmation')}}</div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary mt-1">Create</button>
                     </form>
                 </div>
             </div>
