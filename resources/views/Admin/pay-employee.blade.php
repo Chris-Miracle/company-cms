@@ -7,6 +7,11 @@
             <div class="card">
                 <div class="card-header">{{ __('Pay Employee Bulk') }}</div>
                 <div class="card-body">
+                    @if(session()->has('success'))
+                        <div class="alert alert-success" role="alert">
+                            <strong>Success!</strong> {{ session()->get('success') }}
+                        </div>
+                    @endif
                     <form action="{{route('pay-bulk-employees-salary')}}" method="post">
                         @csrf
                         @method('post')
@@ -28,6 +33,11 @@
             <div class="card">
                 <div class="card-header">{{ __('Pay Employee Single') }}</div>
                 <div class="card-body">
+                    @if(session()->has('success-single'))
+                        <div class="alert alert-success" role="alert">
+                            <strong>Success!</strong> {{ session()->get('success-single') }}
+                        </div>
+                    @endif
                     <form action="{{route('pay-single-employees-salary')}}" method="post">
                         @csrf
                         @method('post')

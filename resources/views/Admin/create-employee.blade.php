@@ -7,6 +7,11 @@
             <div class="card">
                 <div class="card-header">{{ __('Create Employee') }}</div>
                 <div class="card-body">
+                    @if(session()->has('success'))
+                        <div class="alert alert-success" role="alert">
+                            <strong>Success!</strong> {{ session()->get('success') }}
+                        </div>
+                    @endif
                     <form action="{{route('store-employee-details')}}" method="post">
                         @csrf
                         @method('post')

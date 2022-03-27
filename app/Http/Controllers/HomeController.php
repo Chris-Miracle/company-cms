@@ -94,4 +94,55 @@ class HomeController extends Controller
         $employees = Employee::orderBy('created_at', 'desc')->get();
         return view('Admin.pay-employee', compact('employees'));
     }
+
+    public function payEmployeeBulk(Request $request){
+        $request->validate([
+            'due_date' => 'required|exists:employees,due_date'
+        ]);
+
+        $employees = Employee::where('due_date', $request->due_date)->get();
+        $i = 0;
+        foreach($employees as $employee){
+            $user = $employee->user;
+            // Debit the Admin the exact amout of the employee salary
+            $admin_wallet = auth()->user()->wallet;
+            $admin_wallet->balance = $admin_wallet->balance - $employee->salary;
+            $admin_wallet->save();
+            // Credit the Employee
+            $wallet = $user->wallet;
+            $wallet->balance = $employee->salary;
+            $wallet->save();
+            // Add another 30days to due date for employee
+            $now = Carbon::now();
+            $employee->due_date = Carbon::parse($now)->addDays(30);
+            $employee->save();
+            // dd($user, $wallet, $employee->salary);
+            $i++;
+        }
+
+        return redirect('/pay-employee')->with('success', 'You Successfully paid '.$i.' Employees'); 
+    }
+
+    public function payEmployeeSingle(Request $request){
+        $request->validate([
+            "email" => "required|exists:users,email"
+        ]);
+
+        $user = User::where('email', $request->email)->first();
+        $employee = $user->employee;
+        // Debit the Admin the exact amout of the employee salary
+        $admin_wallet = auth()->user()->wallet;
+        $admin_wallet->balance = $admin_wallet->balance - $employee->salary;
+        $admin_wallet->save();
+        // Credit the Employee
+        $wallet = $user->wallet;
+        $wallet->balance = $employee->salary;
+        $wallet->save();
+        // Add another 30days to due date for employee
+        $now = Carbon::now();
+        $employee->due_date = Carbon::parse($now)->addDays(30);
+        $employee->save();
+
+        return redirect('/pay-employee')->with('success-single', 'You Successfully paid '.$user->name); 
+    }
 }
