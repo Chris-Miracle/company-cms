@@ -17,3 +17,4 @@ Auth::routes();
 Route::get('/', [App\Http\Controllers\DashboardController::class, 'index'])->middleware('auth');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/create-employee', [App\Http\Controllers\HomeController::class, 'createEmployee'])->name('create-employee');
