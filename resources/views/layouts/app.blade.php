@@ -12,6 +12,12 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
+    <script>
+        $(document).ready(function(){
+                $("#myToast").toast('show');
+        });
+    </script>
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -21,6 +27,36 @@
 </head>
 <body>
     <div id="app">
+        @if(session()->has('success'))
+            <div class="toast" id="myToast" data-delay="10000" style="position: absolute; top: 0; right: 0;">
+                <div class="toast-header">
+                    🚀
+                    <strong class="mr-auto">Awesome</strong>
+                    <small>Just Now</small>
+                    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="toast-body">
+                    {{ session()->get('success') }}
+                </div>
+            </div>
+        @endif
+        @if(session()->has('error'))
+            <div class="toast" id="myToast" data-delay="10000" style="position: absolute; top: 0; right: 0;">
+                <div class="toast-header">
+                    😢
+                    <strong class="mr-auto">Error</strong>
+                    <small>Just Now</small>
+                    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="toast-body">
+                    {{ session()->get('error') }}
+                </div>
+            </div>
+        @endif
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">

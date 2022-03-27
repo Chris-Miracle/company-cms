@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">{{ __('Create Employee') }}</div>
                 <div class="card-body">
-                    <form  method="post" enctype="multipart/form-data">
+                    <form action="{{route('store-employee-details')}}" method="post">
                         @csrf
                         @method('post')
                         <div class="row mb-4">
@@ -52,6 +52,12 @@
                             </div>
                         </div>
 
+                        <div class="row mb-4">
+                            <label for="job_desc">Job Description</label>
+                            <textarea name="job_desc" class="form-control" cols="10" rows="10">{{old('job_desc')}}</textarea>
+                            <div class="text-danger">{{$errors->first('job_desc')}}</div>
+                        </div>
+
                         <button type="submit" class="btn btn-primary mt-1">Create</button>
                     </form>
                 </div>
@@ -66,20 +72,24 @@
                 <thead>
                     <tr>
                     <th scope="col">S/N</th>
-                    <th scope="col">Location</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Show Date & Time</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Job Title</th>
+                    <th scope="col">Salary</th>
+                    <th scope="col">Due Date</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {{-- @foreach ($movies as $movie)
+                    <?php $i = 1 ?>
+                    @foreach ($employees as $employee)
                         <tr>
-                            <th scope="row">{{$movie->id}}</th>
-                            <td>{{ucfirst($movie->cinema_location->location)}}</td>
-                            <td>{{ucfirst($movie->movie_title)}}</td>
-                            <td>{{date('F j, Y', strtotime($movie->show_date))}} By {{date('g:i a', strtotime($movie->show_time))}}</td>
+                            <th scope="row">{{$i++}}</th>
+                            <td>{{ucfirst($employee->user->name)}}</td>
+                            <td>{{ucfirst($employee->job_title)}}</td>
+                            <td>NGN{{number_format($employee->salary)}}</td>
+                            <td>{{date('F j, Y', strtotime($employee->due_date))}}</td>
+                            {{-- <td>{{date('F j, Y', strtotime($movie->show_date))}} By {{date('g:i a', strtotime($movie->show_time))}}</td> --}}
                         </tr>
-                    @endforeach --}}
+                    @endforeach
                 </tbody>
             </table>
         </div>

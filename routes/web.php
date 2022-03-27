@@ -18,3 +18,4 @@ Route::get('/', [App\Http\Controllers\DashboardController::class, 'index'])->mid
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/create-employee', [App\Http\Controllers\HomeController::class, 'createEmployee'])->name('create-employee');
+Route::post('/store-employee', [App\Http\Controllers\HomeController::class, 'storeEmployee'])->name('store-employee-details');

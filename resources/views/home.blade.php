@@ -16,7 +16,7 @@
             <div class="card text-white bg-dark mb-3" style="">
                 <div class="card-header">Wallet</div>
                 <div class="card-body">
-                    <h5 class="card-title">{{ number_format(Auth::user()->wallet->balance) }}</h5>
+                    <h5 class="card-title">NGN{{ number_format(Auth::user()->wallet->balance) }}</h5>
                     <p class="card-text">This is your current wallet balance.</p>
                 </div>
             </div>
@@ -44,13 +44,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php $i = 0 ?>
+                    <?php $i = 1 ?>
                     @foreach ($employees as $employee)
                         <tr>
                             <th scope="row">{{$i++}}</th>
                             <td>{{ucfirst($employee->user->name)}}</td>
                             <td>{{ucfirst($employee->job_title)}}</td>
-                            <td>{{number_format($employee->salary)}}</td>
+                            <td>NGN{{number_format($employee->salary)}}</td>
                             <td>{{date('F j, Y', strtotime($employee->due_date))}}</td>
                             {{-- <td>{{date('F j, Y', strtotime($movie->show_date))}} By {{date('g:i a', strtotime($movie->show_time))}}</td> --}}
                         </tr>

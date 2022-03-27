@@ -49,4 +49,8 @@ class User extends Authenticatable
     public function wallet(){
         return $this->hasOne('App\Models\Wallet');
     }
+
+    public function employee(){
+        return $this->hasOne('App\Models\Employee');
+    }
 }
