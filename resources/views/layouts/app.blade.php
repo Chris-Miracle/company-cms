@@ -101,6 +101,10 @@
                                     <a class="dropdown-item" href="{{ route('create-employee') }}">
                                         {{ __('Create Employee') }}
                                     </a>
+
+                                    <a class="dropdown-item" href="{{ route('pay-employee') }}">
+                                        {{ __('Pay Employees') }}
+                                    </a>
                                     
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();

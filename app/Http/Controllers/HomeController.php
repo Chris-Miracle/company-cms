@@ -88,10 +88,10 @@ class HomeController extends Controller
         ]);
 
         $wallet->refresh();
-        // if($wallet){
-        //     return redirect('/create-employee')->with('success', 'Employee Created Successfully');
-        // }else{
-        //     return redirect('/create-employee')->with('error', "Couldn't Create Employee Wallet");
-        // }
+    }
+
+    public function payEmployee(){
+        $employees = Employee::orderBy('created_at', 'desc')->get();
+        return view('Admin.pay-employee', compact('employees'));
     }
 }
