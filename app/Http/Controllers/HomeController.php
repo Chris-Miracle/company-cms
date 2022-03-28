@@ -137,7 +137,7 @@ class HomeController extends Controller
         $admin_wallet->save();
         // Credit the Employee
         $wallet = $user->wallet;
-        $wallet->balance = $employee->salary;
+        $wallet->balance = $wallet->balance + $employee->salary;
         $wallet->save();
         // Add another 30days to due date for employee
         $now = Carbon::now();
