@@ -99,7 +99,7 @@
                                         </div>
                                         <div class="form-group col-md-6 mb-1">
                                             <label for="email">Email</label>
-                                            <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{Auth::user()->email}}">
+                                            <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{Auth::user()->email}}" readonly>
                                             <div class="text-danger">{{$errors->first('email')}}</div>
                                         </div>
                                     </div>
@@ -150,12 +150,17 @@
                                     <strong>Success!</strong> {{ session()->get('success-security') }}
                                 </div>
                             @endif
+                            @if(session()->has('success-security-warning'))
+                                <div class="alert alert-warning" role="alert">
+                                    <strong>Info!</strong> {{ session()->get('success-security-warning') }}
+                                </div>
+                            @endif
                             <form action="{{route('security-account-setting')}}" method="post">
                                 @csrf
                                 @method('post')
                                 <div class="row mb-4">
                                     <div class="form-group col-md-6 mb-1">
-                                        <label for="password">Password</label>
+                                        <label for="password">New Password</label>
                                         <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" value="{{old('password')}}">
                                         <div class="text-danger">{{$errors->first('password')}}</div>
                                     </div>

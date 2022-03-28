@@ -19,7 +19,7 @@ class CreateWalletsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('balance')->default(0);
             $table->date('default_withdrawal_date')->nullable();
-            $table->date('default_withdrawal_time')->nullable();
+            $table->time('default_withdrawal_time')->nullable();
             $table->date('next_salary')->nullable();
             $table->timestamps();
         });

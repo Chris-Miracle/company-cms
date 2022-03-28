@@ -108,7 +108,7 @@
                             </div>
                             @if (Auth::user()->wallet->default_withdrawal_date != null)
                                 <div class="card-footer">
-                                    <p class="card-text">Next Withdrawal: 30th April, 2022 By 2pm</p>
+                                    <p class="card-text">Next Withdrawal: {{date('F j, Y', strtotime(Auth::user()->wallet->default_withdrawal_date))}} By {{date('g:i a', strtotime(Auth::user()->wallet->default_withdrawal_time))}}</p>
                                 </div>
                             @endif
                         </div>

@@ -104,6 +104,7 @@ class HomeController extends Controller
         $i = 0;
         foreach($employees as $employee){
             $user = $employee->user;
+            $now = Carbon::now();
             // Debit the Admin the exact amout of the employee salary
             $admin_wallet = auth()->user()->wallet;
             $admin_wallet->balance = $admin_wallet->balance - $employee->salary;
@@ -111,9 +112,9 @@ class HomeController extends Controller
             // Credit the Employee
             $wallet = $user->wallet;
             $wallet->balance = $employee->salary;
+            $wallet->next_salary = Carbon::parse($now)->addDays(30);
             $wallet->save();
             // Add another 30days to due date for employee
-            $now = Carbon::now();
             $employee->due_date = Carbon::parse($now)->addDays(30);
             $employee->save();
             // dd($user, $wallet, $employee->salary);
